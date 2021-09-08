@@ -1,0 +1,53 @@
+:root {
+  background: white ;
+}
+input[type=button], input[type=submit], input[type=reset] {
+    background-color: skyblue;
+    border: none;
+    padding: 8px 16px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+  
+  /* Tip: use width: 100% for full-width buttons */
+  
+
+  input{
+    background-color: white;
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid black;
+    border-radius: 4px;
+    color: black;
+  }
+
+  form{
+    margin: 0px auto;
+    margin-top: 30px;
+    width: 100%;
+    padding: 24px;
+    max-width: 448px;
+    background: white;
+    border-radius: 4px;
+    box-shadow: rgba(60, 66, 87, 0.12) 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
+  }
+
+  .inputfile{
+    content: 'Select some files';
+    display: inline-block;
+    background: linear-gradient(top, #f9f9f9, #e3e3e3);
+    border: 1px solid #999;
+    border-radius: 3px;
+    padding: 5px 8px;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    text-shadow: 1px 1px #fff;
+    font-weight: 700;
+    font-size: 10pt;
+  }
+
