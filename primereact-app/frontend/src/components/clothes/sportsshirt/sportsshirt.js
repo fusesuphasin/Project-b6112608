@@ -1,21 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
-import { classNames } from "primereact/utils";
-import { DataTable } from "primereact/datatable";
-import { Column } from "primereact/column";
-import { Toast } from "primereact/toast";
 import { Button } from "primereact/button";
-import { FileUpload } from "primereact/fileupload";
-import { Rating } from "primereact/rating";
-import { Toolbar } from "primereact/toolbar";
-import { InputTextarea } from "primereact/inputtextarea";
-import { RadioButton } from "primereact/radiobutton";
-import { InputNumber } from "primereact/inputnumber";
 import { Dialog } from "primereact/dialog";
-import { InputText } from "primereact/inputtext";
 import { DataScroller } from "primereact/datascroller";
 import { Dropdown } from "primereact/dropdown";
 import "./sportsshirt.css";
-import { string } from "prop-types";
 
 const shirt = [
   {
@@ -58,6 +46,7 @@ function Sportsshirt() {
   });
 
   const [displayBasic, setDisplayBasic] = useState(false);
+  const [total, setTotal] = useState(0);
   const [Data, setData] = useState([]);
   const [products, setProducts] = useState(null);
   const [submitted, setSubmitted] = useState(false);
@@ -89,8 +78,8 @@ function Sportsshirt() {
       ...confirmOrder,
       team: item.team,
       image: item.src,
-      totalPrice: item.price,
     });
+    setClothes(item);
     console.log(confirmOrder);
   };
 
@@ -123,27 +112,16 @@ function Sportsshirt() {
   };
 
   const clothesOnChange = (e) => {
-    console.log(e.value);
-    setConfirmOrder({ ...confirmOrder, [e.target.name]: e.value });
+    setConfirmOrder({ ...confirmOrder, [e.target.name]: e.target.value });
   };
 
-  const clothesAmount = [
-    { amount: 1 },
-    { amount: 2 },
-    { amount: 3 },
-    { amount: 4 },
-    { amount: 5 },
-    { amount: 6 },
-    { amount: 7 },
-    { amount: 8 },
-    { amount: 9 },
-  ];
-  const clothesSize = [
-    { size: "S" },
-    { size: "M" },
-    { size: "L" },
-    { size: "XL" },
-  ];
+  const amoutOnChange = (e) => {
+    setConfirmOrder({ ...confirmOrder, [e.target.name]: e.value });
+    console.log(confirmOrder.amount);
+  };
+
+  const clothesAmount = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const clothesSize = ["S", "M", "L"];
 
   const itemTemplate = (data) => {
     return (
@@ -211,6 +189,12 @@ function Sportsshirt() {
                 alt={confirmOrder.image}
                 value={confirmOrder.image}
                 name="src"
+                style={{
+                  width: "200px",
+                  display: "block",
+                  marginLeft: "auto",
+                  marginRight: "auto",
+                }}
               />
             </div>
             <div className="product-detail">
@@ -226,7 +210,7 @@ function Sportsshirt() {
                 value={confirmOrder.size || "S"}
                 options={clothesSize}
                 onChange={clothesOnChange}
-                optionLabel="size"
+                optionLabel=""
               />
             </div>
             <div className="p-field">
@@ -236,15 +220,15 @@ function Sportsshirt() {
                 value={confirmOrder.amount || 1}
                 options={clothesAmount}
                 onChange={clothesOnChange}
-                optionLabel="amount"
+                optionLabel=""
               />
             </div>
             <div className="p-field">
               <label>Total Price</label>
-              <div>
+              <div id="totalPrice" name="totalPrice">
                 {confirmOrder.amount == 1
-                  ? clothes.totalPrice
-                  : clothes.totalPrice * confirmOrder.amount || 0}
+                  ? clothes.price
+                  : confirmOrder.amount * clothes.price}
               </div>
             </div>
           </form>

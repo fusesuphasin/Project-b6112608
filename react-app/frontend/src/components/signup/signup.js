@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link, useHistory } from "react-router-dom";
 import "./signup.css";
 
 function Signup() {
@@ -15,6 +16,23 @@ function Signup() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(users);
+
+    fetch("http://localhost:4200/signup/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(users),
+    })
+      /*   .then((res) => {
+        if (res.ok) {
+          history.push("/home");
+        }
+      }) */
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("register successfully");
+        //history.push("/home");
+      })
+      .catch((err) => console.log("can't register "));
   };
 
   const updateUsers = (e) => {

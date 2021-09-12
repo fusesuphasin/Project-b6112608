@@ -9,13 +9,12 @@ table, th, td {
     border-spacing: 0px;
   }
   
-img{
+.img{
     width: 200px;
     display: block;
     margin-left: auto;
     margin-right: auto;
     box-shadow: rgba(60, 66, 87, 0.12) 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
-
 }
 
 .popup{
@@ -81,12 +80,23 @@ form{
       margin-top: 10px;
   }
 
-  .center-div{
-   
+  .product-price{
+    right: 0;
+    margin-right: 0px;
   }
 
-  .center{
-   
+  .buy-button{
+    margin-top: 80px;
+    height: 40px;
+    width: 100px;
+    background-color: #45b3e0;
+    border: none;
+  }
+
+  .buy-button:hover{
+    background-color: #71c5e7;
+    color: black;
+    cursor:pointer;
   }
 
   .center-div > button {
@@ -119,4 +129,25 @@ form{
 
   select{
       width: 40px;
+  }
+
+  .listshirt-div{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+  }
+
+  .listshirt-img{
+    left: 0;
+    width: 200px;
+    box-shadow: rgba(60, 66, 87, 0.12) 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
+
+  }
+
+  .product-detail{
+    left: 0;
+    display: block;
+    margin-left: 50px;
+    margin-right: auto;
+    margin-top: 80px;
   }

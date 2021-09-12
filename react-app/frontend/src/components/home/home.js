@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../navbar/navbar";
 
 function Home() {
+  const [email, setEmail] = useState(sessionStorage.getItem("email"));
+  const [fname, setFname] = useState(sessionStorage.getItem("fname"));
+  const [lname, setLname] = useState(sessionStorage.getItem("lname"));
   return (
     <div>
       <Navbar />
+
       <img
         style={{
           width: "40%",

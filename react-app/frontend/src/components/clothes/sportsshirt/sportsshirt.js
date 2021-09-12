@@ -98,34 +98,33 @@ function Sportsshirt() {
         >
           List of Product
         </h4>
-        <table>
-          {/*   <tr>
-            <th>Shirt</th>
-            <th>Price</th>
-            <th>Team</th>
-            <th>Buy</th>
-          </tr> */}
 
-          {shirt.map((item) => {
-            return (
-              <tr>
-                <td>
-                  <img src={item.src} alt="" />
-                </td>
-                <td>{item.price}</td>
-                <td>{item.team}</td>
-                <td>
-                  <button
-                    className="Buying-button"
-                    onClick={(e) => buyShirt(item)}
-                  >
-                    BUY
-                  </button>
-                </td>
-              </tr>
-            );
-          })}
-        </table>
+        {shirt.map((data) => {
+          return (
+            <div className="listshirt-div">
+              <img className="listshirt-img" src={data.src} alt="" />
+              <div className="product-detail">
+                <div className="product-team">{data.team}</div>
+                <div className="product-description">
+                  {/* {data.description} */}
+                </div>
+              </div>
+              <div className="product-action">
+                <span className="product-price">${data.price}</span>
+                <button
+                  className="buy-button"
+                  value={data}
+                  icon="pi pi-shopping-cart"
+                  label="Buy"
+                  onClick={(e) => buyShirt(data)}
+                  /* onChange={clothesHandle} */
+                >
+                  Buy
+                </button>
+              </div>
+            </div>
+          );
+        })}
       </div>
 
       <Popup triger={buttonPopup}>
@@ -182,8 +181,8 @@ function Sportsshirt() {
             <div className="comfirm-div">
               <label className="label">Total Price</label>
               <div
-                id="image"
-                name="image"
+                id="totalPrice"
+                name="totalPrice"
                 value={confirmOrder.src}
                 onChange={handleOrder}
               >

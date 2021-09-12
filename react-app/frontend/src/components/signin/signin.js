@@ -1,25 +1,49 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import reactImg from "./react.jpg";
+import { Link, useHistory } from "react-router-dom";
 
 import "../signin/signin.css";
 
 function Signin() {
+  let history = useHistory();
   const [user, setUser] = useState({
     email: String,
     password: String,
     /*  currentUser: null,
     message: "", */
   });
+  const [getuser, setGetuser] = useState();
+
+  useEffect(() => {}, []);
 
   const onChange = (e) => {
-    setUser({ [e.target.name]: e.target.value });
+    setUser({ ...user, [e.target.name]: e.target.value });
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
-    window.location.href = "/home";
+    /*   console.log(user); */
+
+    fetch("http://localhost:4200/signin/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(user),
+    })
+      /*   .then((res) => {
+        if (res.ok) {
+          history.push("/home");
+        }
+      }) */
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data.email);
+        sessionStorage.setItem("email", data.email);
+        sessionStorage.setItem("fname", data.first_name);
+        sessionStorage.setItem("lname", data.last_name);
+        history.push("/home");
+      })
+      .catch((err) => console.log("error"));
   };
+
   return (
     <div className="signIn">
       <div class="loginForm">
