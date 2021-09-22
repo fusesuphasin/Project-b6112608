@@ -1,0 +1,99 @@
+{/* <form className="p-fluid">
+          <div className="p-field">
+            <label>Name</label>
+            <InputText
+              id="name"
+              name="name"
+              value={users.name}
+              onChange={updateUsers}
+            />
+          </div>
+          <div className="p-field">
+            <label>Email</label>
+            <InputText
+              id="email"
+              name="email"
+              value={users.email}
+              onChange={updateUsers}
+            />
+          </div>
+          <div className="p-field">
+            <label>Password</label>
+            <Password
+              id="password"
+              name="password"
+              value={users.password}
+              onChange={updateUsers}
+            />
+          </div>
+          <div className="p-field">
+            <label>Birthday</label>
+            <Calendar
+              id="birthday"
+              name="birthday"
+              value={users.birthday}
+              onChange={updateUsers}
+            />
+          </div>
+          <div className="p-field">
+            <label>Address</label>
+            <InputText
+              id="address"
+              name="address"
+              value={users.address}
+              onChange={updateUsers}
+            />
+          </div>
+          <div className="p-field">
+            <label>Phone</label>
+            <InputMask
+              id="phone"
+              name="phone"
+              mask="(999) 999-9999"
+              value={users.phone}
+              onChange={updateUsers}
+            />
+          </div>
+          <div className="p-field">
+            <label>Image</label>
+            <br />
+            <FileUpload
+              id="image"
+              name="image"
+              accept="image/*"
+              value={users.image}
+              onChange={updateUsers}
+              uploadOptions={{
+                style: { display: "none" },
+              }}
+              itemTemplate={(file, props) => {
+                return (
+                  <img
+                    alt={file.name}
+                    role="presentation"
+                    src={file.objectURL}
+                    style={{
+                      borderRadius: "50%",
+                      width: "100px",
+                      height: "100px",
+                      margin: "0 auto",
+                    }}
+                  />
+                );
+              }}
+            />
+          </div>
+          <Button label="Submit" onClick={handleSubmit} />
+        </form> */}
+
+        ____________________________________________
+
+        
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    window.location.href = "/";
+  };
+
+  const updateUsers = (e) => {
+    setUsers({ [e.target.name]: e.target.value });
+  };
